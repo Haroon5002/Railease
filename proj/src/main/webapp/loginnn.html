@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LOGIN</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="style.css">
+  
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <img src="images/vb.png" class="bgimage"><br><br>
+        <form class="header">
+            <img src="images/ti.webp" class="trainimage">
+            <a href="home.html">
+                <i class="fa fa-home" style="font-size:33px"></i>
+            </a>
+            <a href="login.html" class="b4">Login</a>
+            <a href="register.html" class="b2">Register</a>
+            <a href="bookings.jsp" class="b2">Bookings</a>
+            <a href="contact.html" class="b2">Contact Us</a> 
+            <a href="profile.jsp" class="b2">My Profile</a>
+            <a href="logo.jsp" class="b2">Logout</a>
+            <button class="b3"></button>
+        </form>
+        <div id="login">
+            <form id="rs_form" action="login.jsp">
+                <center>
+                    <h1 style="color: #303090;">PLEASE LOGIN FIRST!</h1><br>
+                    <input type="text" placeholder="Username" name="uid" class="name1" required>
+                    
+                    <br>
+                    
+                    <br>
+                    <input type="password" placeholder="Password" class="name2" name="pwd" onblur="no()" required>
+                    
+                    <br><br>
+                    <input type="checkbox" class="rm" value="Remember me"><label for="rm" class="rm-label">Remember me</label><br><br>
+                    <div class="pass" style="margin-left:40px;">
+                        
+                        Don't have an account? <a href="register.html" class="rg">Register</a><br>
+                    </div>
+                    <hr><br><br>
+                    <button class="b7" type="submit">Sign In</button><br>
+                    <div class="pass">
+                    <a href="forgotpass.jsp" class="fp" style="margin-left:137px;">Forgotten password?</a>
+                    <marquee><h4 style="font-size:10.5pt;">*On Successful login you will be redirected to Booking page.</h4></marquee>
+                </div>
+                </div>
+                </center>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

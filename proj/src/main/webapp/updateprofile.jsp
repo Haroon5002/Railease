@@ -1,0 +1,110 @@
+<%@ page import="java.sql.*" %>
+<%@ page import="java.io.*" %>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection,jakarta.servlet.http.HttpSession"%>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>REGISTER</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+   
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <img src="images/vb.png" class="bgimage"><br><br>
+        <form class="header">
+            <img src="images/ti.webp" class="trainimage">
+            <a href="home.html">
+                <i class="fa fa-home" style="font-size:33px"></i>
+            </a>
+            <a href="login.html" class="b4">Login</a>
+            <a href="register.html" class="b2">Register</a>
+            <a href="bookings.jsp" class="b2">Bookings</a>
+            <a href="contact.html" class="b2">Contact Us</a> 
+            <a href="profile.jsp" class="b2">My Profile</a>
+             <a href="logo.jsp" class="b2">Logout</a>
+            <button class="b3"></button>
+        </form>
+        <script>
+            $(document).ready(function() {
+                $('#dateInput').flatpickr({
+                dateFormat: "d-m-Y", // Set the date format
+                });
+            });
+
+
+        </script>
+        <%	try{
+        	String id=request.getParameter("id");
+        	//String fname=request.getParameter("fname");
+        	Class.forName("com.mysql.cj.jdbc.Driver");
+        	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3307/project","root","root");
+        	String sql="select * from user where id=?";
+        	PreparedStatement p=con.prepareStatement(sql);
+        	p.setString(1,id);
+        	ResultSet rs=p.executeQuery();
+        	
+        %>
+        <div id="register">
+            <form id="rs_form" action="update-p.jsp">
+                <center>
+                <input type="hidden" value="<%=id %>" name="id" >
+                    <h1 style="color: #303090;">UPDATE ACCOUNT</h1><br>
+                   <% while(rs.next()){ %>
+                    <input type="text" placeholder="First name" class="name1" name="fname" value="<%=rs.getString("fname") %>">
+                    <input type="text" placeholder="Last name" required class="ip" name="lname" value="<%=rs.getString("lname") %>">
+                    
+                   
+                    <br><br>
+                    <input type="password" placeholder="Password" class="name2" name="pwd" onblur="no()" value="<%=rs.getString("pwd") %>" required>
+                    <input type="password" placeholder="Confirm password" class="ip" value="<%=rs.getString("pwd") %>" onblur="no()">
+                    <br>
+                    <br>
+                    <input type="text" placeholder="Enter Prefered Username" name="uid" class="name1" value="<%=rs.getString("uid") %>" required>
+                    <input type="text"  id="dateInput" class="ip" placeholder="Date of birth" name="date" required>
+                    <br><br>
+                    <input type="email" class="name2" placeholder="Email" name="email" value="<%=rs.getString("email") %>" required>
+                    <input type="tel" class="name3" value="+91" disabled>
+                    <input type="number" class="ip" placeholder="Number" name="number" value="<%=rs.getString("number") %>" required>
+                    <br><br>
+                    <select name="Nationality" class="gp" required value="<%=rs.getString("nationality") %>" >
+                        <option>INDIAN</option>
+                        <option>AMERICAN</option>
+                        <option>EUROPIAN</option>
+                        <option>CHINEESE</option>
+                        <option>JAPANEESE</option>
+                       
+                    </select>
+                    <div class="d3">
+                        <h3>Gender : <input type="radio" value="Male" name="gender" required>Male
+                                 <input type="radio" value="Female" name="gender">Female</h3>
+                    </div>
+                    <br>
+                    <div class="pass">
+                        
+                        Already have an account? <a href="login.html" class="lf">Login</a><br>
+                    </div>
+                    <hr><br><br>
+                    <button class="b7" type="submit">Update</button><br>
+                    <% } %>
+                   
+                </div>
+                </center>
+            </form>
+        </div>
+        <% } 
+        catch(Exception e){
+        e.printStackTrace();
+        }
+        %>
+    </div>
+</body>
+</html>
