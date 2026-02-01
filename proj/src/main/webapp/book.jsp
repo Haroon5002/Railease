@@ -6,6 +6,8 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
+<%@ include file="WEB-INF/db.jsp" %>
+
 <html>
 <script>
 function valid() {
@@ -19,8 +21,7 @@ function valid() {
 </script>
 <%
 try {
-    Class.forName("com.mysql.cj.jdbc.Driver");
-    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/project", "root", "root");
+
     String id = request.getParameter("inputid");
     String train_id = request.getParameter("train_id");
     String classs = request.getParameter("class");

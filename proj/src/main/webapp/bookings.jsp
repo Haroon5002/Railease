@@ -1,4 +1,6 @@
 <%@ page import="java.sql.*,jakarta.servlet.http.HttpSession" %>
+<%@ include file="WEB-INF/db.jsp" %>
+
 <% 
 	HttpSession ss=request.getSession(false);
 	if(ss!=null){
@@ -93,8 +95,7 @@
                             <th>CANCEL</th>
                         </tr>
                         <% try {
-                            Class.forName("com.mysql.cj.jdbc.Driver");
-                            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/project", "root", "root");
+                         
                             String sql = "select * from booking";
                             PreparedStatement statement = con.prepareStatement(sql);
                             ResultSet resultSet = statement.executeQuery();

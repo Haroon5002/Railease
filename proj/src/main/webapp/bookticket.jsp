@@ -6,11 +6,11 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
+<%@ include file="WEB-INF/db.jsp" %>
+
 <html>
 <%
 try {
-    Class.forName("com.mysql.cj.jdbc.Driver");
-    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/project", "root", "root");
 
     String train_name = request.getParameter("trainname");
     String depart_time = request.getParameter("depart_time");
