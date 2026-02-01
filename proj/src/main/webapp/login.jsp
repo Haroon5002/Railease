@@ -35,7 +35,6 @@ if (uid != null && pwd != null) {
 
     rs.close();
     stmt.close();
-    con.close();
 } else {
     // Show the login form if uid or pwd is not provided
 %>
