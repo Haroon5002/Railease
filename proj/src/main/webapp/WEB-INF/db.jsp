@@ -1,4 +1,9 @@
 <%@ page import="java.sql.*" %>
+
+<%!
+    Connection con;
+%>
+
 <%
     String DB_HOST = System.getenv("DB_HOST");
     String DB_PORT = System.getenv("DB_PORT");
@@ -6,9 +11,9 @@
     String DB_USER = System.getenv("DB_USER");
     String DB_PASS = System.getenv("DB_PASS");
 
-    String url = "jdbc:mysql://" + DB_HOST + ":" + DB_PORT + "/" + DB_NAME + "?ssl-mode=REQUIRED";
+    String url = "jdbc:mysql://" + DB_HOST + ":" + DB_PORT + "/" + DB_NAME
+               + "?ssl-mode=REQUIRED";
 
     Class.forName("com.mysql.cj.jdbc.Driver");
-    Connection conn = DriverManager.getConnection(url, DB_USER, DB_PASS);
+    con = DriverManager.getConnection(url, DB_USER, DB_PASS);
 %>
-
