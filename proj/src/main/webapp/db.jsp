@@ -9,6 +9,6 @@
     String url = "jdbc:mysql://" + DB_HOST + ":" + DB_PORT + "/" + DB_NAME + "?ssl-mode=REQUIRED";
 
     Class.forName("com.mysql.cj.jdbc.Driver");
-    Connection conn = DriverManager.getConnection(url, DB_USER, DB_PASS);
+    Connection con = DriverManager.getConnection(url, DB_USER, DB_PASS);
 %>
 
